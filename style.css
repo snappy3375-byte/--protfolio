@@ -1,0 +1,214 @@
+/* Purple Vercel-Hybrid Theme */
+:root {
+    --bg-color: #0d1117;
+    --card-bg: rgba(22, 27, 34, 0.85);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-color: #c9d1d9;
+    --heading-color: #ffffff;
+    
+    /* Dynamic Purple Accents */
+    --purple-primary: #a855f7;
+    --purple-glow: rgba(168, 85, 247, 0.25);
+    --gradient-accent: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Mouse Follow Purple Glow Light Effect */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--purple-glow) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Navbar & Animated Sliding Pill */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-weight: 800;
+    color: var(--heading-color);
+    font-size: 1.2rem;
+}
+
+.nav-container {
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-hover-pill {
+    position: absolute;
+    height: 100%;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 6px;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 1;
+    transition: color 0.2s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--heading-color);
+}
+
+/* Page Layout & Container */
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.skills-grid, .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Card Reveal Effect (ခေါင်းစဉ်ပေါ် Mouse တင်မှ စာတန်း ပေါ်လာစေရန်) */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+.card h3 {
+    color: var(--heading-color);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+/* Hover အသုံးမပြုမီ စာတန်းများကို ဖျောက်ထားခြင်း */
+.card p, .card .tags {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mouse Hover လုပ်လိုက်မှ စာတန်းများ ချောမွေ့စွာ ပေါ်လာမည် */
+.card:hover {
+    border-color: var(--purple-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+}
+
+.card:hover h3 {
+    color: var(--purple-primary);
+}
+
+.card:hover p {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 0.5rem;
+}
+
+.card:hover .tags {
+    max-height: 100px;
+    opacity: 1;
+    margin-top: 0.8rem;
+}
+
+.badge {
+    background: rgba(168, 85, 247, 0.15);
+    color: var(--purple-primary);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.tags span {
+    background: #21262d;
+    border: 1px solid var(--border-color);
+    color: var(--purple-primary);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 3rem;
+}
+/* Ultra-Smooth & Slow Page Transition Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Move Distance ကို နည်းနည်း ပိုတိုးထားသည် */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 1. Page Main Content ကြာချိန်ကို 1.5 စက္ကန့်ထိ တိုးထားပါသည် (အလွန် နှေးပြီး Smooth ဖြစ်သွားမည်) */
+.container {
+    animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 2. Cards များ အစဉ်လိုက် ပေါ်လာသည့် Delay ကြာချိန်များကို နှေးပေးထားသည် */
+.skills-grid .card:nth-child(1), .projects-grid .card:nth-child(1) { animation-delay: 0.2s; }
+.skills-grid .card:nth-child(2), .projects-grid .card:nth-child(2) { animation-delay: 0.4s; }
+.skills-grid .card:nth-child(3), .projects-grid .card:nth-child(3) { animation-delay: 0.6s; }
+.skills-grid .card:nth-child(4), .projects-grid .card:nth-child(4) { animation-delay: 0.8s; }
+
+/* 3. Card ပေါ် Mouse တင်လိုက်ရင် ပေါ်လာသည့် စာတန်း Transition ကြာချိန်ကိုပါ နှေးပေးထားသည် */
+.card, .card p, .card .tags {
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
