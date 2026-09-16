@@ -186,29 +186,27 @@ footer {
     margin-top: 3rem;
 }
 /* Ultra-Smooth & Slow Page Transition Animation */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px); /* Move Distance ကို နည်းနည်း ပိုတိုးထားသည် */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Page Header Animation */
+.container .hero {
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
-/* 1. Page Main Content ကြာချိန်ကို 1.5 စက္ကန့်ထိ တိုးထားပါသည် (အလွန် နှေးပြီး Smooth ဖြစ်သွားမည်) */
-.container {
-    animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* 2. Cards များ အစဉ်လိုက် ပေါ်လာသည့် Delay ကြာချိန်များကို နှေးပေးထားသည် */
-.skills-grid .card:nth-child(1), .projects-grid .card:nth-child(1) { animation-delay: 0.2s; }
-.skills-grid .card:nth-child(2), .projects-grid .card:nth-child(2) { animation-delay: 0.4s; }
-.skills-grid .card:nth-child(3), .projects-grid .card:nth-child(3) { animation-delay: 0.6s; }
-.skills-grid .card:nth-child(4), .projects-grid .card:nth-child(4) { animation-delay: 0.8s; }
+/* Base Card State (စပေါ်ချိန်တွင် ဖျောက်ထားမည်) */
+.card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
 
-/* 3. Card ပေါ် Mouse တင်လိုက်ရင် ပေါ်လာသည့် စာတန်း Transition ကြာချိန်ကိုပါ နှေးပေးထားသည် */
-.card, .card p, .card .tags {
-    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
+/* Card တစ်ခုချင်းစီ ပေါ်လာသည့် Class */
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
 }
